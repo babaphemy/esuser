@@ -6,9 +6,11 @@ export default [
   {
     input: "src/index.ts",
     output: {
-      file: "dist/bundle.js",
+      dir: "dist/cjs",
       format: "cjs",
       sourcemap: true,
+      exports: "named",
+      preserveModules: true,
     },
     external: ["react", "react-dom", "react/jsx-runtime"],
     plugins: [
@@ -25,9 +27,10 @@ export default [
   {
     input: "src/index.ts",
     output: {
-      file: "dist/bundle.mjs",
+      dir: "dist/esm",
       format: "esm",
       sourcemap: true,
+      preserveModules: true,
     },
     external: ["react", "react-dom", "react/jsx-runtime"],
     plugins: [
