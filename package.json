@@ -30,6 +30,10 @@
   ],
   "author": "Femi Adigun",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/babaphemy/esuser.git"
+  },
   "peerDependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
