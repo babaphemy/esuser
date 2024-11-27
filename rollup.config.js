@@ -1,44 +1,45 @@
-import typescript from "rollup-plugin-typescript2";
-import { nodeResolve } from "@rollup/plugin-node-resolve";
+import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
+import typescript from "rollup-plugin-typescript2";
+import dts from "rollup-plugin-dts";
+import terser from "@rollup/plugin-terser";
+import peerDepsExternal from "rollup-plugin-peer-deps-external";
+
 export default [
   // commonjs build
   {
     input: "src/index.ts",
-    output: {
-      dir: "dist/cjs",
-      format: "cjs",
-      sourcemap: true,
-      exports: "named",
-      preserveModules: true,
-    },
+    output: [
+      {
+        file: "dist/cjs/index.js",
+        format: "cjs",
+        sourcemap: true,
+      },
+      {
+        file: "dist/esm/index.js",
+        format: "esm",
+        sourcemap: true,
+      },
+    ],
     external: ["react", "react-dom", "react/jsx-runtime"],
     plugins: [
+      peerDepsExternal(),
+      resolve(),
+      commonjs(),
       typescript({
         tsconfig: "./tsconfig.json",
+        exclude: ["**/__tests__", "**/*.test.ts"],
+        outputToFilesystem: true,
+        declaration: true,
+        declarationDir: "./dist/types",
       }),
-      nodeResolve(),
-      commonjs({
-        esmExternals: true,
-      }),
+      terser(),
     ],
   },
-  //  es module build
   {
     input: "src/index.ts",
-    output: {
-      dir: "dist/esm",
-      format: "esm",
-      sourcemap: true,
-      preserveModules: true,
-    },
+    output: [{ file: "dist/index.d.ts", format: "es" }],
     external: ["react", "react-dom", "react/jsx-runtime"],
-    plugins: [
-      typescript({
-        tsconfig: "./tsconfig.json",
-      }),
-      nodeResolve(),
-      commonjs(),
-    ],
+    plugins: [dts()],
   },
 ];

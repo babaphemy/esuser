@@ -19,7 +19,7 @@ import {
   PasswordRequirements,
   RequirementItem,
 } from "../styles/styles";
-import { ResetPasswordFormData, ResetPasswordProps } from "types";
+import { ResetPasswordFormData, ResetPasswordProps } from "../types";
 import { CheckIcon, EyeIcon, EyeOffIcon, XIcon } from "styles/icons/icons";
 
 const defaultTheme = {
@@ -40,7 +40,6 @@ const ResetPassword: React.FC<ResetPasswordProps> = ({
   onBackToLogin,
   loading = false,
   error,
-  token,
   theme = defaultTheme,
 }) => {
   const [formData, setFormData] = useState<ResetPasswordFormData>({

@@ -18,8 +18,8 @@ import {
   Checkbox,
   CheckboxLabel,
 } from "../styles/styles";
-import { SignupFormData, SignupProps } from "types";
 import { EyeIcon, EyeOffIcon } from "styles/icons/icons";
+import { SignupFormData, SignupProps } from "../types";
 
 const defaultTheme = {
   colors: {
@@ -134,7 +134,7 @@ const Signup: React.FC<SignupProps> = ({
     <ThemeProvider theme={theme}>
       <Container>
         <FormCard>
-          <Title>Create Account</Title>
+          <Title>Create New Account</Title>
           {error && <ErrorMessage>{error}</ErrorMessage>}
 
           <Form onSubmit={handleSubmit}>

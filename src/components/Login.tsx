@@ -16,7 +16,7 @@ import {
   LinkGroup,
   StyledLink,
 } from "../styles/styles";
-import { LoginFormData, LoginProps } from "types";
+import { LoginFormData, LoginProps } from "../types";
 import { EyeIcon, EyeOffIcon } from "styles/icons/icons";
 const defaultTheme = {
   colors: {

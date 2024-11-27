@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
-    "jsx": "react",
-    "target": "es2016",
+    "jsx": "react-jsx",
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "sourceMap": true,
     "declaration": true,
-    "declarationDir": "dist/types",
-    "moduleResolution": "node",
+    "declarationDir": "./dist/types",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     // "preserveSymlinks": true,
@@ -15,8 +16,15 @@
     "strict": true,
     "baseUrl": "./src",
     "outDir": "dist",
+    "skipLibCheck": true,
 
-    "skipLibCheck": true
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "emitDeclarationOnly": false,
+
+    "moduleResolution": "node",
+    "isolatedModules": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
