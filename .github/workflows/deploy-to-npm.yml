@@ -23,6 +23,10 @@ jobs:
           npm install @rollup/rollup-linux-x64-gnu
 
       - run: npm run build
+
+      # Remove rollup platform-specific dependency before publishing
+      - run: npm uninstall @rollup/rollup-linux-x64-gnu
+
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
