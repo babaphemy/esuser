@@ -228,3 +228,11 @@ export const Subtitle = styled.p`
   opacity: 0.8;
   line-height: 1.5;
 `;
+export const LogoLink = styled.a`
+  display: block;
+  margin-bottom: 20px;
+`;
+
+export const LogoImage = styled.img`
+  width: 100px;
+`;

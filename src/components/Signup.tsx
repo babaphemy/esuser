@@ -17,6 +17,8 @@ import {
   Grid,
   Checkbox,
   CheckboxLabel,
+  LogoLink,
+  LogoImage,
 } from "../styles/styles";
 import { EyeIcon, EyeOffIcon } from "styles/icons/icons";
 import { SignupFormData, SignupProps } from "../types";
@@ -37,6 +39,7 @@ const Signup: React.FC<SignupProps> = ({
   onLogin,
   loading = false,
   error,
+  logo,
   theme = defaultTheme,
 }) => {
   const [formData, setFormData] = useState<SignupFormData>({
@@ -57,7 +60,7 @@ const Signup: React.FC<SignupProps> = ({
     const nameRegex = /^[a-zA-Z\s]{2,30}$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const passwordRegex =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/;
 
     // Validate First Name
     if (!formData.firstName) {
@@ -134,6 +137,11 @@ const Signup: React.FC<SignupProps> = ({
     <ThemeProvider theme={theme}>
       <Container>
         <FormCard>
+          {logo && (
+            <LogoLink href="/" rel="noopener noreferrer">
+              <LogoImage src={logo} alt="App Logo" />
+            </LogoLink>
+          )}
           <Title>Create New Account</Title>
           {error && <ErrorMessage>{error}</ErrorMessage>}
 

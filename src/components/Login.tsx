@@ -15,6 +15,8 @@ import {
   Button,
   LinkGroup,
   StyledLink,
+  LogoLink,
+  LogoImage,
 } from "../styles/styles";
 import { LoginFormData, LoginProps } from "../types";
 import { EyeIcon, EyeOffIcon } from "styles/icons/icons";
@@ -34,6 +36,7 @@ const Login: React.FC<LoginProps> = ({
   onSignUp,
   loading = false,
   error,
+  logo,
   theme = defaultTheme,
 }) => {
   const [formData, setFormData] = useState<LoginFormData>({
@@ -94,6 +97,11 @@ const Login: React.FC<LoginProps> = ({
     <ThemeProvider theme={theme}>
       <Container>
         <FormCard>
+          {logo && (
+            <LogoLink href="/" rel="noopener noreferrer">
+              <LogoImage src={logo} alt="App Logo" />
+            </LogoLink>
+          )}
           <Title>Sign In</Title>
           {error && <ErrorMessage>{error}</ErrorMessage>}
 

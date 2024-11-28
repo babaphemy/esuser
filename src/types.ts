@@ -9,6 +9,7 @@ export interface LoginProps {
   onSignUp?: () => void;
   loading?: boolean;
   error?: string;
+  logo?: string;
   theme?: {
     colors?: {
       primary?: string;
@@ -33,6 +34,7 @@ export interface SignupProps {
   onLogin?: () => void;
   loading?: boolean;
   error?: string;
+  logo?: string;
   theme?: {
     colors?: {
       primary?: string;
@@ -54,6 +56,7 @@ export interface ResetPasswordProps {
   loading?: boolean;
   error?: string;
   token?: string;
+  logo?: string;
   theme?: {
     colors?: {
       primary?: string;

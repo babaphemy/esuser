@@ -18,6 +18,8 @@ import {
   PasswordStrengthMeter,
   PasswordRequirements,
   RequirementItem,
+  LogoLink,
+  LogoImage,
 } from "../styles/styles";
 import { ResetPasswordFormData, ResetPasswordProps } from "../types";
 import { CheckIcon, EyeIcon, EyeOffIcon, XIcon } from "styles/icons/icons";
@@ -40,6 +42,7 @@ const ResetPassword: React.FC<ResetPasswordProps> = ({
   onBackToLogin,
   loading = false,
   error,
+  logo,
   theme = defaultTheme,
 }) => {
   const [formData, setFormData] = useState<ResetPasswordFormData>({
@@ -131,6 +134,11 @@ const ResetPassword: React.FC<ResetPasswordProps> = ({
     <ThemeProvider theme={theme}>
       <Container>
         <FormCard>
+          {logo && (
+            <LogoLink href="/" rel="noopener noreferrer">
+              <LogoImage src={logo} alt="App Logo" />
+            </LogoLink>
+          )}
           <Title>Reset Password</Title>
           <Subtitle>Enter your new password below</Subtitle>
 
