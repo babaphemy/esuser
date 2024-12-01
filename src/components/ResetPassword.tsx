@@ -46,6 +46,7 @@ const ResetPassword: React.FC<ResetPasswordProps> = ({
   theme = defaultTheme,
 }) => {
   const [formData, setFormData] = useState<ResetPasswordFormData>({
+    email: "",
     password: "",
     confirmPassword: "",
   });
@@ -145,6 +146,20 @@ const ResetPassword: React.FC<ResetPasswordProps> = ({
           {error && <ErrorMessage>{error}</ErrorMessage>}
 
           <Form onSubmit={handleSubmit}>
+            <InputGroup>
+              <Label htmlFor="email">Email</Label>
+              <Input
+                id="email"
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                error={!!errors.email}
+                disabled={loading}
+                placeholder="Enter your email"
+              />
+              {errors.email && <ErrorMessage>{errors.email}</ErrorMessage>}
+            </InputGroup>
             <InputGroup>
               <Label htmlFor="password">New Password</Label>
               <PasswordWrapper>

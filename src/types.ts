@@ -47,6 +47,7 @@ export interface SignupProps {
   };
 }
 export interface ResetPasswordFormData {
+  email: string;
   password: string;
   confirmPassword: string;
 }
