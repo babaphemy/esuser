@@ -48,6 +48,7 @@ export interface SignupProps {
 }
 export interface ResetPasswordFormData {
   email: string;
+  token: string;
   password: string;
   confirmPassword: string;
 }
@@ -56,7 +57,6 @@ export interface ResetPasswordProps {
   onBackToLogin?: () => void;
   loading?: boolean;
   error?: string;
-  token?: string;
   logo?: string;
   theme?: {
     colors?: {

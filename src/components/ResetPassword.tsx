@@ -47,6 +47,7 @@ const ResetPassword: React.FC<ResetPasswordProps> = ({
 }) => {
   const [formData, setFormData] = useState<ResetPasswordFormData>({
     email: "",
+    token: "",
     password: "",
     confirmPassword: "",
   });
@@ -82,6 +83,18 @@ const ResetPassword: React.FC<ResetPasswordProps> = ({
 
   const validateForm = (): boolean => {
     const newErrors: Partial<ResetPasswordFormData> = {};
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    // Validate Email
+    if (!formData.email) {
+      newErrors.email = "Email is required";
+    } else if (!emailRegex.test(formData.email)) {
+      newErrors.email = "Enter a valid email address";
+    }
+
+    if (!formData.token) {
+      newErrors.token = "Token is required";
+    }
 
     // Validate password strength
     if (!formData.password) {
@@ -159,6 +172,20 @@ const ResetPassword: React.FC<ResetPasswordProps> = ({
                 placeholder="Enter your email"
               />
               {errors.email && <ErrorMessage>{errors.email}</ErrorMessage>}
+            </InputGroup>
+            <InputGroup>
+              <Label htmlFor="token">Token</Label>
+              <Input
+                id="token"
+                type="text"
+                name="token"
+                value={formData.token}
+                onChange={handleChange}
+                error={!!errors.token}
+                disabled={loading}
+                placeholder="Enter token from email"
+              />
+              {errors.token && <ErrorMessage>{errors.token}</ErrorMessage>}
             </InputGroup>
             <InputGroup>
               <Label htmlFor="password">New Password</Label>
