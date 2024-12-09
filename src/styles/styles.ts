@@ -9,12 +9,12 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.colors?.background || "#f5f5f5"};
 `;
 export const FormCard = styled.div`
+  width: 100%;
+  max-width: 500px;
+  padding: 2rem;
   background: white;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 32px;
-  width: 100%;
-  max-width: 400px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
 export const Title = styled.h1`
@@ -31,6 +31,8 @@ export const Form = styled.form`
 `;
 
 export const InputGroup = styled.div`
+  width: 100%;
+  margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -43,14 +45,15 @@ export const Label = styled.label`
 `;
 
 export const Input = styled.input<{ error?: boolean }>`
-  padding: 12px;
+  width: 100%;
+  padding: 0.75rem;
   border: 1px solid
     ${({ error, theme }) =>
       error
         ? theme.colors?.error || "#ff4d4f"
         : theme.colors?.border || "#d9d9d9"};
   border-radius: 4px;
-  font-size: 16px;
+  font-size: 1rem;
   outline: none;
   transition: all 0.3s ease;
 
@@ -148,8 +151,9 @@ export const StyledLink = styled.button`
 `;
 export const Grid = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  width: 100%;
 
   @media (max-width: 600px) {
     grid-template-columns: 1fr;

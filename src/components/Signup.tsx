@@ -46,6 +46,7 @@ const Signup: React.FC<SignupProps> = ({
     firstName: "",
     lastName: "",
     email: "",
+    phone: "",
     password: "",
     confirmPassword: "",
     acceptTerms: false,
@@ -59,6 +60,7 @@ const Signup: React.FC<SignupProps> = ({
     const newErrors: Partial<SignupFormData> = {};
     const nameRegex = /^[a-zA-Z\s]{2,30}$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^\+?[1-9]\d{1,14}$/;
     const passwordRegex =
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/;
 
@@ -81,6 +83,9 @@ const Signup: React.FC<SignupProps> = ({
       newErrors.email = "Email is required";
     } else if (!emailRegex.test(formData.email)) {
       newErrors.email = "Enter a valid email address";
+    }
+    if (formData.phone && !phoneRegex.test(formData.phone)) {
+      newErrors.phone = "Enter a valid phone number e.g +2348012345678";
     }
 
     // Validate Password
@@ -195,6 +200,20 @@ const Signup: React.FC<SignupProps> = ({
                 placeholder="Enter your email"
               />
               {errors.email && <ErrorMessage>{errors.email}</ErrorMessage>}
+            </InputGroup>
+            <InputGroup>
+              <Label htmlFor="phone">Phone</Label>
+              <Input
+                id="phone"
+                type="text"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                error={!!errors.phone}
+                disabled={loading}
+                placeholder="Enter your phone number"
+              />
+              {errors.lastName && <ErrorMessage>{errors.phone}</ErrorMessage>}
             </InputGroup>
 
             <InputGroup>
